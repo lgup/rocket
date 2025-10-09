@@ -1,0 +1,153 @@
+# Shadowrocket: 2025-10-09 18:42:17
+[General]
+ipv6 = false
+bypass-system = true
+# 本地/局域网地址直连
+skip-proxy = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,localhost,*.local
+bypass-tun = 10.0.0.0/8,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16,224.0.0.0/4,255.255.255.255/32
+
+# 国内为主，但防止 DNS 污染：国内 DoH 放前，国外 DoH 备用；fallback 强制国外解析
+dns-server = https://dns.alidns.com/dns-query,https://doh.pub/dns-query,https://dns.google/dns-query,https://1.1.1.1/dns-query
+fallback-dns = https://dns.google/dns-query,https://1.1.1.1/dns-query
+dns-fallback-filter = geoip-cn
+
+[Rule]
+
+# === 社交 / 短信 / 消息类（代理） ===
+## X (Twitter)
+DOMAIN-SUFFIX,twitter.com,PROXY
+DOMAIN-SUFFIX,x.com,PROXY
+DOMAIN-SUFFIX,t.co,PROXY
+
+## WhatsApp
+DOMAIN-SUFFIX,whatsapp.com,PROXY
+DOMAIN-SUFFIX,whatsapp.net,PROXY
+
+## Telegram（含媒体 CDN）
+DOMAIN-SUFFIX,t.me,PROXY
+DOMAIN-SUFFIX,telegram.org,PROXY
+DOMAIN-SUFFIX,telegra.ph,PROXY
+DOMAIN-SUFFIX,tgcdn.com,PROXY
+DOMAIN-SUFFIX,telegramcdn.com,PROXY
+DOMAIN-SUFFIX,cdn.telegram.org,PROXY
+DOMAIN-SUFFIX,api.telegram.org,PROXY
+
+## Instagram
+DOMAIN-SUFFIX,instagram.com,PROXY
+DOMAIN-SUFFIX,cdninstagram.com,PROXY
+DOMAIN-SUFFIX,instagramcdn.com,PROXY
+
+# === 流媒体 / 视频（强制代理，防 DNS 污染） ===
+## YouTube / Google 视频
+DOMAIN-SUFFIX,youtube.com,PROXY
+DOMAIN-SUFFIX,googlevideo.com,PROXY
+DOMAIN-SUFFIX,ytimg.com,PROXY
+DOMAIN-SUFFIX,ytimg.l.google.com,PROXY
+DOMAIN-SUFFIX,yt3.ggpht.com,PROXY
+DOMAIN-SUFFIX,ggpht.com,PROXY
+DOMAIN-SUFFIX,google.com,PROXY
+DOMAIN-SUFFIX,googleapis.com,PROXY
+DOMAIN-SUFFIX,gstatic.com,PROXY
+
+## Coupang Play
+DOMAIN-SUFFIX,coupangplay.com,PROXY
+DOMAIN-SUFFIX,coupangcdn.com,PROXY
+
+## Speedtest / 测速
+DOMAIN-SUFFIX,speedtest.net,PROXY
+DOMAIN-SUFFIX,ookla.com,PROXY
+
+# === AI / 开发 / API（代理） ===
+## ChatGPT / OpenAI
+DOMAIN-SUFFIX,openai.com,PROXY
+DOMAIN-SUFFIX,chat.openai.com,PROXY
+DOMAIN-SUFFIX,chatgpt.com,PROXY
+DOMAIN-SUFFIX,ai.com,PROXY
+
+## Google xAI / Gemini / Grok
+DOMAIN-SUFFIX,x.ai,PROXY
+DOMAIN-SUFFIX,gemini.ai,PROXY
+DOMAIN-SUFFIX,api.x.ai,PROXY
+DOMAIN-SUFFIX,grok.x.ai,PROXY
+DOMAIN-SUFFIX,api.grok.x.ai,PROXY
+
+# === 区域社交（韩服等） ===
+## KakaoTalk
+DOMAIN-SUFFIX,kakao.com,PROXY
+DOMAIN-SUFFIX,kakaocdn.net,PROXY
+
+# === 国内直连（核心服务） ===
+## Apple / tvOS / App Store
+DOMAIN-SUFFIX,apple.com,DIRECT
+DOMAIN-SUFFIX,icloud.com,DIRECT
+DOMAIN-SUFFIX,itunes.apple.com,DIRECT
+DOMAIN-SUFFIX,apps.apple.com,DIRECT
+DOMAIN-SUFFIX,appstore.com,DIRECT
+DOMAIN-SUFFIX,me.com,DIRECT
+DOMAIN-SUFFIX,apple-cloudkit.com,DIRECT
+DOMAIN-SUFFIX,cdn-apple.com,DIRECT
+
+## 抖音 / 字节系（国内 CDN 直连）
+DOMAIN-SUFFIX,douyin.com,DIRECT
+DOMAIN-SUFFIX,iesdouyin.com,DIRECT
+DOMAIN-SUFFIX,amemv.com,DIRECT
+DOMAIN-SUFFIX,bytedance.com,DIRECT
+DOMAIN-SUFFIX,bytecdn.cn,DIRECT
+DOMAIN-SUFFIX,bytegoofy.com,DIRECT
+DOMAIN-SUFFIX,pstatp.com,DIRECT
+DOMAIN-SUFFIX,snssdk.com,DIRECT
+DOMAIN-SUFFIX,toutiao.com,DIRECT
+DOMAIN-SUFFIX,toutiaoimg.com,DIRECT
+DOMAIN-SUFFIX,toutiaocdn.com,DIRECT
+
+## 微信（全部国内直连，保证稳定）
+DOMAIN-SUFFIX,weixin.qq.com,DIRECT
+DOMAIN-SUFFIX,wx.qq.com,DIRECT
+DOMAIN-SUFFIX,qq.com,DIRECT
+DOMAIN-SUFFIX,qpic.cn,DIRECT
+DOMAIN-SUFFIX,p.qlogo.cn,DIRECT
+DOMAIN-SUFFIX,wx2.qq.com,DIRECT
+DOMAIN-SUFFIX,wechat.com,DIRECT
+DOMAIN-SUFFIX,wechatapp.com,DIRECT
+DOMAIN-SUFFIX,wechatpay.com,DIRECT
+DOMAIN-SUFFIX,wxapp.qq.com,DIRECT
+DOMAIN-SUFFIX,mmsns.qpic.cn,DIRECT
+DOMAIN-SUFFIX,c2cpicdw.qpic.cn,DIRECT
+
+## 支付 / 购物（国内直连）
+DOMAIN-SUFFIX,tenpay.com,DIRECT
+DOMAIN-SUFFIX,alipay.com,DIRECT
+DOMAIN-SUFFIX,taobao.com,DIRECT
+DOMAIN-SUFFIX,jd.com,DIRECT
+DOMAIN-SUFFIX,baidu.com,DIRECT
+DOMAIN-SUFFIX,163.com,DIRECT
+DOMAIN-SUFFIX,bilibili.com,DIRECT
+DOMAIN-SUFFIX,acgvideo.com,DIRECT
+DOMAIN-SUFFIX,meituan.com,DIRECT
+DOMAIN-SUFFIX,dianping.com,DIRECT
+DOMAIN-SUFFIX,xiaohongshu.com,DIRECT
+DOMAIN-SUFFIX,amap.com,DIRECT
+DOMAIN-SUFFIX,autonavi.com,DIRECT
+DOMAIN-SUFFIX,pinduoduo.com,DIRECT
+
+# 荒野乱斗（国服）直连
+DOMAIN-SUFFIX,brawlstars.qq.com,DIRECT
+DOMAIN-SUFFIX,brawlstarsgame.com,DIRECT
+DOMAIN-SUFFIX,supercell.cn,DIRECT
+DOMAIN-SUFFIX,supercell.qq.com,DIRECT
+DOMAIN-SUFFIX,igame.qq.com,DIRECT
+DOMAIN-SUFFIX,cdn.qq.com,DIRECT
+DOMAIN-SUFFIX,supercell.com,DIRECT
+DOMAIN-SUFFIX,supercell.net,DIRECT
+DOMAIN-SUFFIX,sc-cdn.net,DIRECT
+DOMAIN-SUFFIX,brawlstars.cn,DIRECT
+
+# === 其他规则 ===
+GEOIP,CN,DIRECT
+FINAL,PROXY
+
+[URL Rewrite]
+# Google.cn 重定向（可选）
+^https?://(www\.)?(g|google)\.cn https://www.google.com 302
+
+# NOTE: App-first configuration — no MITM entries to avoid app certificate issues
